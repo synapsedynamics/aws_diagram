@@ -2,6 +2,11 @@
 Terraform configuratino for diagram.png
 See `insertCredentials_.bash`
 
+## Security Groups
+The assumption is that every EC2 instance or stateful service explicitly allows certain ports providing access to attached security groups specified with  `ingress_rules[*].security_group_source_names[*]`.
+Network ACLs are to prevent unexpected traffic from leaving the VPC.
+
+
 ## Stateful Services
 `blue` is a stateful instance identifier for `blue` / `green` 
 
