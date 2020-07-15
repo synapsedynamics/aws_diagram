@@ -23,7 +23,7 @@ variable "security_groups" {
       name = "elasticache_blue"
       ingress_rules = [{
         description                 = "Allow from public alb"
-        security_group_source_names = ["public_alb"]
+        security_group_source_names = ["website"]
         port                        = 6379
         protocol                    = "tcp"
       }]
