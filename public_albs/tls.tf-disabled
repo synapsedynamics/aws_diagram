@@ -1,0 +1,45 @@
+resource "tls_private_key" "sites" {
+  for_each = local.sites
+  # Eliptic Curve instead of RSA, neither will stand up to Shor's Algorithm
+  algorithm = "ECDSA"
+  # "over time an implementation of cryptography only gets weaker"
+  ecdsa_curve = "P521"
+}
+
+resource "tls_self_signed_cert" "sites" {
+  for_each      = local.sites
+  key_algorithm = "ECDSA"
+  #  private_key_pem = tls_private_key.websites.private_key_pem
+  private_key_pem = tls_private_key.sites[each.key].private_key_pem
+
+  subject {
+    common_name  = each.value.common_name
+    organization = "zdzi finance"
+  }
+
+  validity_period_hours = 720
+
+  allowed_uses = [
+    "key_encipherment",
+    "digital_signature",
+    "server_auth"
+  ]
+
+}
+
+resource "aws_acm_certificate" "sites" {
+  for_each         = local.sites
+  # self-signed cert for demo
+  validation_method = "NONE"
+#  private_key      = tls_private_key.sites[each.key].private_key_pem
+#  certificate_body = tls_self_signed_cert.sites[each.key].cert_pem
+ private_key = "${file(${each.value.common_name}_.key)}"
+ certificate_body = "${file(${each.value.common_name}_.cert)}"
+  lifecycle {
+    create_before_destroy = true
+  }
+  tags = {
+    name = each.value.common_name
+    environment = local.base.environment.name
+  }
+}
