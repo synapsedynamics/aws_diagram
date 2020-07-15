@@ -14,7 +14,7 @@ locals {
       for ing_rules__key, ing_rule in security_group.ingress_rules[*] : [
         for sg_source__key, sg_source in ing_rule.security_group_source_names[*] : {
           rule              = "${security_group.name}.${ing_rule.port}.${sg_source}"
-          new_desc          = "${ing_rule.description} ${ing_rule.protocol}/${ing_rule.port} from ${sg_source}"
+          new_desc          = "${ing_rule.pre_description} ${ing_rule.protocol}/${ing_rule.port} from ${sg_source}"
           protocol          = ing_rule.protocol
           port              = ing_rule.port
           security_group_id = element(matchkeys(values(local.sg_ids), keys(local.sg_ids), [security_group.name]), 1)
