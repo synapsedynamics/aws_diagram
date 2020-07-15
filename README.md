@@ -11,6 +11,7 @@ Network ACLs are to prevent unexpected traffic from leaving the VPC.
 `blue` is a stateful instance identifier for `blue` / `green` 
 
 ## TODO:
+- consolidate EC2 instances to `vars_ec2instances.tf` like `vars_security_groups.tf`
 - modularize elasticache and rds
 - attachment groups for `morty` instances and `internal_lb`
 - move `public_albs/local.sites_.tf` to `vars_sites.tf`
