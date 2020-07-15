@@ -10,7 +10,7 @@
 #   }
 locals {
   ing_rule__and__sg_source = flatten([
-    for security_group__key, security_group in var.security_groups : [
+    for security_group__key, security_group in local.base.security_groups : [
       for ing_rules__key, ing_rule in security_group.ingress_rules[*] : [
         for sg_source__key, sg_source in ing_rule.security_group_source_names[*] : {
           rule              = "${security_group.name}.${ing_rule.port}.${sg_source}"

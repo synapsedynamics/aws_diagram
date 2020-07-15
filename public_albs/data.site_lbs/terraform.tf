@@ -16,8 +16,8 @@ terraform {
 provider "aws" {
   version    = "~> 2.0"
   region     = local.base.aws_region
-  access_key = ""
-  secret_key = ""
+  access_key = "__accesskey__"
+  secret_key = "__secretkey__"
 }
 
 data "terraform_remote_state" "base" {

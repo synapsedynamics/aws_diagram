@@ -1,5 +1,5 @@
 locals {
-  base       = data.terraform_remote_state.base.outputs
+  base = data.terraform_remote_state.base.outputs
 }
 
 terraform {

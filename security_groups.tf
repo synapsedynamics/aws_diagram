@@ -9,6 +9,29 @@
 resource "aws_security_group" "db_reports" {
   name   = "db_reports"
   vpc_id = aws_vpc.defaultvpc.id
+
+  tags = {
+    name = "db_reports"
+    managed_by_terraform = "true"
+  }
+}
+
+resource "aws_security_group" "public_alb" {
+  name   = "public_alb"
+  vpc_id = aws_vpc.defaultvpc.id
+
+  tags = {
+    name = "public_alb"
+    managed_by_terraform = "true"
+  }
+    ingress {
+    description = "HTTP/TLS from internet"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = [ "0.0.0.0/0" ]
+  }
+
 }
 
 resource "aws_security_group" "security_group" {
@@ -17,4 +40,10 @@ resource "aws_security_group" "security_group" {
   }
   name = each.value.name
   vpc_id = aws_vpc.defaultvpc.id
+
+  tags = {
+    name = each.value.name
+    managed_by_terraform = "true"
+  }
+
 }

@@ -1,7 +1,6 @@
 locals {
   base    = data.terraform_remote_state.base.outputs
-  sg_ids  = data.terraform_remote_state.base.outputs.security_groups
-  sg_sets = data.terraform_remote_state.data_security_groups.outputs.sets
+  sg_ids  = data.terraform_remote_state.data_security_groups.outputs.sg_ids
 }
 
 output sg_ids {

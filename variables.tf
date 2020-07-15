@@ -11,7 +11,7 @@ variable "environment" {
     name         = "de-dust"
     end_customer = "crisprAccelerate"
     cidr_block = "10.20.0.0/16"
-    region = "__awsregion__"
+    region = "us-west-1"
   }
 }
 

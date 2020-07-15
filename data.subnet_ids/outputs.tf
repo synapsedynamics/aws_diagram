@@ -4,7 +4,3 @@ output "public" {
 output "private" {
   value = data.aws_subnet_ids.private.ids
 }
-
-output "y" {
-  value = data.aws_subnet.private
-}

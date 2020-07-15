@@ -2,16 +2,21 @@ output "environment" {
   value = var.environment
 }
 
-#output "security_groups_ids" {
-#  value = {
-#    "db_reports"       = aws_security_group.db_reports.id
-#    "content-manager"  = aws_security_group.content-manager.id
-#    "elasticache_blue" = aws_security_group.elasticache_blue.id
-#    "morty"            = aws_security_group.morty.id
-#    "public_alb"       = aws_security_group.public_alb.id
-#    "rds_blue"         = aws_security_group.rds_blue.id
-#    "website"          = aws_security_group.website.id
-#  }
+output security_group_names {
+  value = local.security_group_names
+}
+
+#output "security_groups" {
+#  value = aws_security_group.security_group
+##   value = {
+##     "db_reports"       = aws_security_group.db_reports.id
+##     "content-manager"  = aws_security_group.content-manager.id
+##     "elasticache_blue" = aws_security_group.elasticache_blue.id
+##     "morty"            = aws_security_group.morty.id
+##     "public_alb"       = aws_security_group.public_alb.id
+##     "rds_blue"         = aws_security_group.rds_blue.id
+##     "website"          = aws_security_group.website.id
+##   }
 #}
 
 output security_groups {

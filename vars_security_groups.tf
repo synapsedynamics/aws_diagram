@@ -1,3 +1,7 @@
+locals {
+  security_group_names = [ "content-manager", "db_reports", "elasticache_blue", "morty", "public_alb", "rds_blue", "website" ]
+}
+
 variable "security_groups" {
   type = list(object({
     name = string

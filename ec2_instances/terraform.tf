@@ -2,6 +2,7 @@ locals {
   base       = data.terraform_remote_state.base.outputs
   sites      = data.terraform_remote_state.sites.outputs.sites
   subnet_ids = data.terraform_remote_state.subnet_ids.outputs
+  sg_ids = data.terraform_remote_state.data_security_groups.outputs.sg_ids
 }
 
 terraform {
@@ -37,6 +38,12 @@ data "terraform_remote_state" "sites" {
 data "terraform_remote_state" "subnet_ids" {
   backend = "local"
   config = {
-    path = "../data_subnet_ids/terraform.tfstate"
+    path = "../data.subnet_ids/terraform.tfstate"
+  }
+}
+data "terraform_remote_state" "data_security_groups" {
+  backend = "local"
+  config = {
+    path = "../data.security_groups/terraform.tfstate"
   }
 }
