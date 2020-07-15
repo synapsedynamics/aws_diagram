@@ -8,7 +8,6 @@ resource "aws_subnet" "subnets" {
   cidr_block              = each.value.cidr
   tags = {
     name         = "prod-${each.value.tier}-1${each.value.az}"
-    use          = each.value.use
     network_tier = each.value.tier
     environment  = local.environment
   }

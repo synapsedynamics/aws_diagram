@@ -3,7 +3,8 @@
 # Use  terraform destry -target=  to delete a security group.
 
 # This security_group intentionally a one_off because db_reports has no open
-# ports. A conditonal statement may be added to the resource that loops
+# ports which could potentially result in all ports unintentionally open.
+# A conditonal statement may be added to the resource that loops
 # through vars.security_groups
 resource "aws_security_group" "db_reports" {
   name   = "db_reports"
