@@ -7,6 +7,7 @@ See `insertCredentials_.bash`
 
 ## TODO:
 - modularize elasticache and rds
+- attachment groups for `morty` instances and `internal_lb`
 - move `public_albs/local.sites_.tf` to `vars_sites.tf`
 - Outbound network traffic filters, Network ACLs
 - Secrets templatizing with Cloud KMS and Hashicorp Vault.
