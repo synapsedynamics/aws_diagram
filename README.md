@@ -1,5 +1,5 @@
 ## Synopsis
-Terraform configuratino for diagram.png
+Terraform configuration for diagram.png
 See `insertCredentials_.bash`
 
 ## Separate directories
